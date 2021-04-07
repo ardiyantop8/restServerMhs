@@ -62,5 +62,18 @@ class Kontak extends REST_Controller
         }
     }
 
+    //Menghapus salah satu data kontak
+    function index_delete()
+    {
+        $id = $this->delete('id');
+        $this->db->where('id', $id);
+        $delete = $this->db->delete('telepon');
+        if ($delete) {
+            $this->response(array('status' => 'success'), 201);
+        } else {
+            $this->response(array('status' => 'fail', 502));
+        }
+    }
+
     //Masukan function selanjutnya disini
 }
